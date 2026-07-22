@@ -1,0 +1,6 @@
+{
+  "name": "RadioVerse",
+  "description": "A comprehensive educational ecosystem for B.Sc. Radiology students featuring study materials, interactive anatomy, X-Ray simulators, cases, and AI-powered study helpers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

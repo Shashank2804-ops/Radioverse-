@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* CENTRALIZED ENTERPRISE DESIGN TOKENS (LIGHT THEME) */
+  --page-bg: #F5F7FA;          /* Very Light Grey */
+  --section-bg: #FFFFFF;       /* Pure White */
+  --primary-text: #0F172A;     /* Dark Navy */
+  --secondary-text: #475569;   /* Slate Grey */
+  --muted-text: #64748B;       /* Muted Text */
+  --disabled-text: #94A3B8;    /* Disabled Text */
+  --primary-blue: #2563EB;     /* Primary Blue */
+  --success: #10B981;          /* Success Green */
+  --warning: #F59E0B;          /* Warning Gold */
+  --error: #EF4444;            /* Error Red */
+}
+
+.dark {
+  /* CENTRALIZED ENTERPRISE DESIGN TOKENS (DARK THEME - HIGHER CONTRAST WCAG AA COMPLIANT) */
+  --page-bg: #090D16;          /* Deep Space Blue/Navy */
+  --section-bg: #111827;       /* Card/Section Slate Background */
+  --primary-text: #F8FAFC;     /* Bright slate text for ultimate contrast */
+  --secondary-text: #CBD5E1;   /* Accessible description text */
+  --muted-text: #94A3B8;       /* Muted text */
+  --disabled-text: #475569;    /* Disabled text */
+  --primary-blue: #3B82F6;     /* Vivid blue */
+  --success: #34D399;          /* Emerald/Mint success */
+  --warning: #FBBF24;          /* Accessible amber warning */
+  --error: #F87171;            /* Soft red error */
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Space Grotesk", sans-serif;
+
+  /* Custom theme properties mapping standard tailwind utility classes to Design Tokens */
+  --color-page-bg: var(--page-bg);
+  --color-section-bg: var(--section-bg);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-muted-text: var(--muted-text);
+  --color-disabled-text: var(--disabled-text);
+  --color-primary-blue: var(--primary-blue);
+  
+  /* Core element mappings */
+  --color-white: var(--section-bg);
+  --color-black: var(--primary-text);
+  --color-blue-600: var(--primary-blue);
+  --color-blue-500: var(--primary-blue);
+  --color-blue-700: var(--primary-blue);
+  
+  --color-emerald-500: var(--success);
+  --color-emerald-600: var(--success);
+  
+  --color-amber-500: var(--warning);
+  --color-amber-600: var(--warning);
+  
+  --color-red-500: var(--error);
+  --color-red-600: var(--error);
+  --color-rose-500: var(--error);
+  --color-rose-600: var(--error);
+
+  /* Mapping standard Tailwind Slate system to design tokens for legacy compatibility */
+  --color-slate-50: var(--page-bg);
+  --color-slate-100: var(--page-bg);
+  --color-slate-150: var(--disabled-text);
+  --color-slate-200: var(--disabled-text);
+  --color-slate-300: var(--disabled-text);
+  --color-slate-400: var(--muted-text);
+  --color-slate-500: var(--muted-text);
+  --color-slate-600: var(--secondary-text);
+  --color-slate-700: var(--secondary-text);
+  --color-slate-800: var(--primary-text);
+  --color-slate-850: var(--primary-text);
+  --color-slate-900: var(--primary-text);
+  --color-slate-950: var(--primary-text);
+
+  --color-gray-50: var(--page-bg);
+  --color-gray-100: var(--page-bg);
+  --color-gray-200: var(--disabled-text);
+  --color-gray-300: var(--disabled-text);
+  --color-gray-400: var(--muted-text);
+  --color-gray-500: var(--muted-text);
+  --color-gray-600: var(--secondary-text);
+  --color-gray-700: var(--secondary-text);
+  --color-gray-800: var(--primary-text);
+  --color-gray-850: var(--primary-text);
+  --color-gray-900: var(--primary-text);
+  --color-gray-950: var(--primary-text);
+  
+  /* Custom shadows with lower opacity for a premium, non-muddy feel */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.02);
+  --shadow-md: 0 4px 16px -1px rgba(15, 23, 42, 0.03), 0 2px 8px -1px rgba(15, 23, 42, 0.015);
+  --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.04), 0 4px 14px -2px rgba(15, 23, 42, 0.02);
+  --shadow-xl: 0 24px 48px -8px rgba(15, 23, 42, 0.05), 0 8px 24px -4px rgba(15, 23, 42, 0.025);
+  
+  /* Custom duration & cubic-bezier for smooth professional feel */
+  --transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* GLOBAL RESET & ELEMENTS OVERRIDES TO AUTOMATICALLY ENFORCE DESIGN SYSTEM & WCAG AA */
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--page-bg);
+  color: var(--primary-text);
+}
+
+/* Enforce WCAG AA Contrast on global elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-text);
+}
+
+p, .body-text {
+  color: var(--secondary-text);
+}
+
+/* 1. Global typography classes with Design Tokens */
+.primary-heading {
+  font-family: var(--font-display);
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary-text);
+}
+@media (min-width: 640px) {
+  .primary-heading {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.5rem;
+  }
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.375rem; /* 22px */
+  line-height: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--primary-text);
+}
+@media (min-width: 640px) {
+  .section-heading {
+    font-size: 1.625rem; /* 26px */
+    line-height: 2rem;
+  }
+}
+
+.subtitle {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  line-height: 1.625;
+  color: var(--secondary-text);
+}
+
+.body-text {
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--secondary-text);
+}
+
+.caption-text {
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+/* 2. Unified Button System with Global Design Tokens */
+.btn-primary-design {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 1rem; /* rounded-2xl */
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-primary-design:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.2);
+}
+.btn-primary-design:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-design {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 1rem; /* rounded-2xl */
+  background-color: var(--page-bg);
+  color: var(--primary-text);
+  border: 1px solid var(--disabled-text);
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-secondary-design:hover {
+  background-color: var(--section-bg);
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+.btn-secondary-design:active {
+  transform: translateY(0);
+}
+
+.btn-outline-design {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 1rem; /* rounded-2xl */
+  background-color: transparent;
+  color: var(--secondary-text);
+  border: 1px solid var(--disabled-text);
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-outline-design:hover {
+  border-color: var(--primary-blue);
+  background-color: rgba(37, 99, 235, 0.05);
+  color: var(--primary-blue);
+  transform: translateY(-1px);
+}
+.btn-outline-design:active {
+  transform: translateY(0);
+}
+
+.btn-ghost-design {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.75rem; /* rounded-xl */
+  background-color: transparent;
+  color: var(--muted-text);
+  border: 1px solid transparent;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.btn-ghost-design:hover {
+  background-color: var(--page-bg);
+  color: var(--primary-text);
+}
+
+/* 3. Premium Card System with Global Design Tokens */
+.premium-card-design {
+  background-color: var(--section-bg);
+  color: var(--primary-text);
+  border: 1px solid var(--disabled-text);
+  border-radius: 1.5rem; /* rounded-3xl */
+  padding: 1.5rem; /* p-6 */
+  box-shadow: var(--shadow-md);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card-interactive {
+  cursor: pointer;
+}
+.premium-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Custom global entry transition for page sections */
+.animate-premium-fade {
+  animation: premiumFade 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes premiumFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
